@@ -69,11 +69,11 @@ const Banner = () => {
         </div>
       </div>
       <div className="flex justify-around mt-16 max-w-7xl mx-auto px-6 md:px-0 ">
-        <TecnologyItem tecnology="Revit" />
-        <TecnologyItem tecnology="Dynamo" />
-        <TecnologyItem tecnology="Python" />
-        <TecnologyItem tecnology="Csharp" />
-        <TecnologyItem tecnology="Forge" />
+        <TecnologyItem tecnology="Revit" icon="revit" />
+        <TecnologyItem tecnology="Dynamo" icon="dynamo" />
+        <TecnologyItem tecnology="Python" icon="python" />
+        <TecnologyItem tecnology="Csharp" icon="csharp" />
+        <TecnologyItem tecnology="Forge" icon="forge" />
       </div>
     </div>
   );
