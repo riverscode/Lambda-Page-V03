@@ -8,10 +8,9 @@ const CourseCard = ({
   discount,
   finalPrice,
   slug,
-
 }) => {
   return (
-    <div className="rounded-md shadow-lg shadow-teal-500/25">
+    <div className="rounded-md shadow-lg shadow-teal-500/25 hover:-translate-y-1 transition ease-out  duration-300 hover:scale-105">
       <Link href={`/cursos/${slug}`}>
         <a>
           <img
@@ -26,8 +25,10 @@ const CourseCard = ({
                 {duration}
               </p>
             </div>
-            <div className="h-32 ">
-              <p className="text-left font-semibold mt-8 md:text-2xl">{title}</p>
+            <div className="h-36 ">
+              <p className="text-left font-semibold mt-8 md:text-2xl">
+                {title}
+              </p>
             </div>
             <div className="flex">
               <p className=" font-light line-through text-gray-400 ">

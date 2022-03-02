@@ -10,7 +10,7 @@ export default function BlogCard({
   slug,
 }) {
   return (
-    <div className=" flex flex-col rounded-md shadow-lg shadow-teal-500/25">
+    <div className=" flex flex-col rounded-md shadow-lg shadow-teal-500/25 hover:-translate-y-1 transition ease-out  duration-300 hover:scale-105">
       <Link href={`/blog/${slug}`}>
         <a>
           <img
