@@ -87,6 +87,7 @@ const FrequentlyQuestions = () => {
             <a
               href="http://wa.link/r4cdgi"
               target="_blank"
+              rel="noreferrer"
               className="bg-emerald-600 px-2 rounded font-semibold hover:bg-emerald-300"
             >
               Contacto

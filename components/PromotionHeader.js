@@ -13,6 +13,7 @@ const PromotionHeader = () => {
           <a
             href="http://wa.link/r4cdgi"
             target="_blank"
+            rel="noreferrer"
             className=" px-3 py-1 ml-5 mt-4 md:mt-0 rounded-md bg-blue-600  hover:bg-blue-400 text-white text-sm hover:-translate-y-1 transition ease-out  duration-300 hover:scale-105 shadow-lg shadow-blue-700/30"
           >
             Contacto Directo

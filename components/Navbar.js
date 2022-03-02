@@ -104,6 +104,7 @@ const Navbar = () => {
             <a
               href="http://wa.link/r4cdgi"
               target="_blank"
+              rel="noreferrer"
               className=" px-4 py-1 flex items-center rounded-md bg-indigo-600  hover:bg-indigo-400 text-white"
             >
               <p className="mr-4">Whatsapp</p>

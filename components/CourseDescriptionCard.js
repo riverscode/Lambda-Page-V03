@@ -73,6 +73,7 @@ const CourseDescriptionCard = ({
             <a
               href="http://wa.link/r4cdgi"
               target="_blank"
+              rel="noreferrer"
               className="font-semibold text-md md:text-xl"
             >
               Cómpralo Ahora

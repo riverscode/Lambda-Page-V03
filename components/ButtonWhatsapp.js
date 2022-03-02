@@ -4,6 +4,7 @@ const ButtonWhatsapp = () => {
       <a
         href="http://wa.link/r4cdgi"
         target="_blank"
+        rel="noreferrer"
         className=" w-80 flex items-center px-4 py-3 text-xl font-bold border-2
       border-green-600 hover:bg-green-500/30 transition-colors duration-200 ease-in-out rounded mt-12 cursor-pointer"
       >
