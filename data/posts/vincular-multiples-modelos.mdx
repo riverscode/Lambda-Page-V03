@@ -1,0 +1,242 @@
+---
+title: "Vincular multiples archivos de Revit"
+publishedAt: "2022-01-13"
+summary: "Agilizar el cargado de multiples modelos con el uso de la API de Revit."
+tags:
+  - "💻 Desarrollo"
+  - "Revit API"
+---
+
+En esta oportunidad desarrollaremos un aplicativo para los usuarios del software de Revit. El cual sera de gran ayuda al momento de querer vincular multiples modelos. La finalidad es optimizar el proceso y disminuir tiempo de esta actividad, ya que cuando trabajamos de proyectos de gran envergadura, la cantidad de especialidades nos obliga a crear multiples modelos.
+
+Empezaremos creando un nuevo proyecto en visual studio, la plantilla de **Librería de Clases (.NET Framework)** usando el lenguaje C#. A este proyecto lo nombraremos **MultipleLinks** y usaremos .NET Framework 4.7.2. para Autodesk Revit 2019.
+
+Iniciaremos nuestro proyecto según la publicación de [Mi primer addin con la API de Revit](https://lambda.com.pe/blog/mi-primer-addin) y tendríamos el siguiente código.
+
+> Nota: Los siguientes pasos que se realizaran se explicaran de manera clara y resumida para el aplicativo que crearemos, pero si tienen dudas sobre primeros pasos de creación de un proyecto hasta la creación del interfaz los invito a revisar mi publicación de [Mi primer addin con la API de Revit](https://lambda.com.pe/blog/mi-primer-addin) para su mejor entendimiento.
+
+```csharp:Command.cs
+// Revit API Namespaces
+using Autodesk.Revit.Attributes;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Selection;
+
+namespace MultipleLinks
+{
+    public class CmdQuantityBox : IExternalCommand
+    {
+        public Result Execute(ExternalCommandData commandData,
+                              ref string message,
+                              ElementSet elements)
+        {
+            TaskDialog.show("Mi primer aplicativo", "Hola Mundo");
+            return Result.Succeeded;
+        }
+    }
+}
+```
+
+Agregaremos la referencia de windows form.
+
+![Inicio de la API de Revit](/images/posts/vincular-multiples-modelos/inicio-revit-API.png)
+
+```csharp
+using System.Windows.Forms; // Agregar la referencia de Windows forms
+```
+
+Agregaremos la referencia de windows form.
+Luego accederemos a la variable [Documento](https://www.revitapidocs.com/2022/ab1718f9-45fb-b3d3-827e-32ff81cf929c.htm), para poder trabajar con propiedades y métodos a lo largo de nuestro proyecto.
+
+```csharp
+UIApplication uiApp = commandData.Application;
+UIDocument uiDoc = uiApp.ActiveUIDocument;
+Document doc = uiDoc.Document;
+```
+
+Luego utilizamos el openFiledialog para abrir un interfaz de búsqueda de archivos
+
+```csharp
+using (OpenFileDialog openFileDialog = new OpenFileDialog())
+{
+   // Codigo a ejectuar
+}
+```
+
+Seleccionaremos una ruta de abertura para nuestro openFiledialog, que para este caso sera el escritorio.
+
+```csharp
+string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+openFileDialog.InitialDirectory = path;
+```
+
+Luego activo la opción de selección multiple de los archivos
+
+```csharp
+openFileDialog.Multiselect = true;
+```
+
+Defino los formatos que podrá seleccionar el usuario
+
+```csharp
+openFileDialog.Filter = "Revit Files (*.rvt)|*.rvt";
+```
+
+Creamos una variable donde almacenar la ruta de los archivos seleccionados
+
+```csharp
+string[] filePaths = null;
+```
+
+Si el usuario selecciona la opción “aceptar = Ok” guardamos la ruta de los archivos seleccionados dentro de Revit.
+
+```csharp
+if (openFileDialog.ShowDialog() == DialogResult.OK)
+{
+  filePaths = openFileDialog.FileNames;
+}
+```
+
+Ahora recorremos las lista de rutas de los elementos seleccionas a traves del uso de foreach. Dentro de nuestro Foreach, obtendremos variables como el [ModelPath](https://www.revitapidocs.com/2019/40a84c72-e4b8-72ac-2f71-3216c66a11b3.htm) y definiremos [RevitLinkOptions](https://www.revitapidocs.com/2015/3f710983-5a4d-d515-a633-12b06a419b30.htm) ,
+
+```csharp
+foreach (string filePath in filePaths)
+{
+	ModelPath modelPath = ModelPathUtils.ConvertUserVisiblePathToModelPath(filePath);
+  RevitLinkOptions revitLinkOptions = new RevitLinkOptions(false);
+}
+```
+
+Dado que modificaremos el elemento es necesario crear una [Transaction](https://www.revitapidocs.com/2015/308ebf8d-d96d-4643-cd1d-34fffcea53fd.htm) donde crearemos un RevitLinkType que define los parámetros del modelo que sera Linkeado y el cual nos servirá para crear nuestra instancia mediante el método RevitLinkInstance.Create. En caso tengamos un error en la creación de nuestra instancia mostraremos un mensaje de la excepción con el método [MessageBox.Show](http://MessageBox.Show) y un trans.RollBack() para anular los cambios realizados
+
+```csharp
+using (Transaction trans = new Transaction(doc))
+{
+   trans.Start("Cargar modelo");
+   try
+   {
+      var linkType = RevitLinkType.Create(doc, modelPath, revitLinkOptions);
+	    var instance = RevitLinkInstance.Create(doc, linkType.ElementId);
+      trans.Commit();
+   }
+   catch (Exception ex)
+   {
+      MessageBox.Show(ex.Message);
+			trans.RollBack();
+   }
+}
+```
+
+Para ya terminar el aplicativo, nos faltaría agregar el archivo manifiesto
+
+```csharp
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>MultipleLinks.dll</Assembly>
+		<ClientId>deb1c920-7acc-4ea3-ac97-036606906a23</ClientId>
+		<FullClassName>MultipleLinks.CmdMultipleLinks</FullClassName>
+		<Text>Multiple Links</Text>
+		<Description>Un simple addin que saluda con carita de feliz :)</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>Lambda Ingenieria e Innovacion</VendorDescription>
+	</AddIn>
+</RevitAddIns>
+```
+
+Y por ultimo agregaremos a Visual Studio los eventos de compilación, los cuales después de compilar un addin dentro de Revit, permite compilar los archivos .dll y .addin dentro de una carpeta que Revit leerá el manifiesto y podrá cargar nuestro addin, podemos encontrar estos eventos en el siguiente [link](https://gist.github.com/riverscode/66b6acac8cd453ad8dac6e553fce9f56).
+
+```csharp
+copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2019"
+copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2019"
+```
+
+Siguiendo lo pasos anteriores llegaríamos a tener el siguiente código del aplicativo.
+
+```csharp
+using Autodesk.Revit.Attributes;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms; // Agregar la referencia de Windows forms
+
+namespace MultipleLinks
+{
+    [Transaction(TransactionMode.Manual)]
+    public class CmdMultipleLinks : IExternalCommand
+    {
+        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        {
+            // Obtener las variables para trabajar con el documento
+            UIApplication uiApp = commandData.Application;
+            UIDocument uiDoc = uiApp.ActiveUIDocument;
+            Document doc = uiDoc.Document;
+
+            // Crear una variable donde almacenar la ruta de los archivos seleccionados
+            string[] filePaths = null;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                // selecciono una ruta de abertura para nuestr ofd
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                openFileDialog.InitialDirectory = path;
+
+                // Activo la opcion de seleccion multiple de archivos
+                openFileDialog.Multiselect = true;
+
+                // Defines los formatos que podra seleccionar el usuario
+                openFileDialog.Filter = "Revit Files (*.rvt)|*.rvt";
+
+                // Si el usuario clickea Aceptar guardamos la ruta de los archivos seleccionados
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePaths = openFileDialog.FileNames;
+                }
+            }
+            // recorremos cada una de las rutas seleccionada
+            foreach (string filePath in filePaths)
+            {
+                // Creamos un Model path a partir de un path = ruta
+                ModelPath modelPath = ModelPathUtils.ConvertUserVisiblePathToModelPath(filePath);
+
+                // Creamos revit link options de manera predefinida
+                RevitLinkOptions revitLinkOptions = new RevitLinkOptions(false);
+
+                // Generamos la transaccion para modificar el documento
+                using (Transaction trans = new Transaction(doc))
+                {
+                    trans.Start("Cargar modelo");
+                    try
+                    {
+                        // Generamos un Revit Linktype -> Define como se carga el modelo linkeado
+                        var linkType = RevitLinkType.Create(doc, modelPath, revitLinkOptions);
+
+                        // Cargamos el modelo.
+                        var instance = RevitLinkInstance.Create(doc, linkType.ElementId);
+                        trans.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        // en caso encuentres un error mostrar mensaje
+                        MessageBox.Show(ex.Message);
+
+                        // eliminar los cambios hechos
+                        trans.RollBack();
+                    }
+                }
+            }
+            return Result.Succeeded;
+        }
+    }
+}
+```
+
+Y eso es todo. Es un proceso que vale la pena intentarlo y probarlo, sumémonos todos para poder formar una comunidad de personas que tengan las ganas de ingresar a este nuevo mundo de la programación.
+
+Si necesitan más información sobre este increíble mundo de la automatización de procesos a través de la creación de aplicaciones en Autodesk Revit no duden en escribirme a mi LinkedIn [Bryan Espinoza Allcca](https://www.linkedin.com/in/bryan-espinoza-bim/) o dejar comentarios debajo de este post.

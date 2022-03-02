@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .custom-box-shadow {
+    @apply rounded-md shadow-lg shadow-green-500/40;
+  }
+}
+
+.fb-comments {
+  color: white;
+}

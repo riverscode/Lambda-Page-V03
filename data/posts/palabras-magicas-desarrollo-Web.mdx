@@ -1,0 +1,64 @@
+---
+title: "Palabras mágicas para el desarrollo web en BIM"
+publishedAt: "2021-12-19"
+summary: "Conoceremos los conceptos basicos del desarrollo web para desarrollar aplicaciones BIM."
+tags:
+  - "💻 Desarrollo"
+  - "Revit API"
+---
+
+Empecemos con mencionar cuál fue la motivación de aprender desarrollo Web a un ingeniero civil enfocado a usar herramientas BIM. La respuesta es la **Descentralización de Información**. He venido trabajando constantemente en mejorar procesos de gestión de información BIM, especialmente en Autodesk Revit, pero siempre me he enfrentado con el mismo problema. La información no llega a todas las personas involucradas en un proyecto.
+
+La información la tiene "la gente de BIM", como si una tribu se tratara 🤣, toda la información esta en el modelo BIM y si quiero acceder tengo que presentar tributos "la gente de BIM" y esperar que termine de hacer su compatibilización para mostrarme una tabla de cuantificación o una vista 3D de una zona especifica.
+
+Por lo cual la mejor idea que se me ocurrió fue descentralizar todo la información dentro de una pagina web. A continuación explicare conceptos organizados que me hubiese gustado saber antes de entrar al desarrollo web.
+
+## Arquitectura Cliente-Servidor
+
+![cliente servidor.png](/images/posts/palabras-magicas-desarrollo-Web/cliente_servidor.png)
+
+Lo primero que me costo es entender como funciona una aplicación web y el concepto fundamental es la **Arquitectura Cliente-Servidor.** Donde tenemos dos partes de una aplicación:
+
+Por un lado tenemos al cliente, que es muy relacionado con la parte que muestra el interfaz al usuario. Este cliente puede ser tu laptop, table, televisor, celular o cualquier dispositivo donde puedas visualizar mediante una pantalla (Estoy siendo lo menos profundo posible).
+
+Por otro lado tenemos al servidor, muy relacionado con las operaciones lógicas de nuestra aplicación. Aquí realizamos operaciones matemáticas, consultas a base de datos, filtros de información, etc.
+
+Pongamos un ejemplo para que se entienda mejor este concepto. Cuando nosotros tratamos de ingresar a nuestro Facebook. **El cliente** es el formulario que vemos en nuestro celular donde ingresamos nuestro usuario/contraseña y **el Servidor** es la parte donde Facebook verifica que el usuario exista en su base de datos y la contraseña sea la correcta para el usuario.
+
+## Html, CSS y JavaScript
+
+![htmlandcss.jpg](/images/posts/palabras-magicas-desarrollo-Web/htmlandcss.jpg)
+
+Entender que tecnologías mínimas intervienen en el desarrollo de una aplicación web es fundamental. Html, CSS y JavaScript son los actores principales en esta película de crear un aplicativo web. **Html** nos permite estructurar el contenido de nuestra aplicación web, por ejemplo cual será el titulo, nuestros párrafos, imágenes, videos, etc. **CSS** nos permitirá darle estilo a nuestro contenido, por ejemplo que titulo sea de color verde, que los párrafos tenga un tamaño y tipo de letra o nuestras imágenes tengan border redondeados y por ultimo el lenguaje de programación **JavaScript** que nos permit agregar las funcionalidades, por ejemplo que realizar cuando hagamos click sobre un botón, consultar al servidor información sobre la base de daos.
+
+**Nota:** Son muchas mas tecnologías que interviene. **ESTO NO ES TODO**
+
+![TECNOLOGIAS WEB.jpg](/images/posts/palabras-magicas-desarrollo-Web/tecnologia-web.jpg)
+
+## Base de Datos
+
+Ahora el concepto que responde ¿Dónde guardaremos la datos? Para eso existen las bases de datos que a diferencia a una simple hoja de excel, en una base de datos podemos almacenar gran cantidad y hacer consulta a esos datos de manera optima. Los consultas básicas para una base de datos ter permite realizar un CRUD.
+
+![Untitled](/images/posts/palabras-magicas-desarrollo-Web/crud.png)
+
+Otro concepto de base de datos es entender la diferencia entre Base de Datos SQL y No-SQL. La diferencia radica principalmente en la estructura de datos. Mientras que las base de datos SQL ya tiene una estructura definida, una base de datos No-SQL te permite ser menos específicos ya que sus datos no son almacenados en tablas fijas.
+
+![Untitled](/images/posts/palabras-magicas-desarrollo-Web/sql-nosql.png)
+
+## Recursos Gratuitos
+
+Hay una infinidad de recursos de pagas de excelente nivel, pero también existe una gran cantidad de recursos gratuitos y en español que pueden guiarte muy bien desde un nivel básico hasta un nivel avanzado en el desarrollo web. Hare una lista exclusiva de YouTube dado la facilidad de encontrar información y videos completos en esta plataforma.
+
+- [Fazt Code](https://www.youtube.com/c/FaztCode)
+- [Fazt](https://www.youtube.com/c/FaztTech)
+- [Bluuweb](https://www.youtube.com/c/Bluuweb)
+- [jonmircha](https://www.youtube.com/c/jonmircha)
+- [Bedimcode (Ejemplos Completos)](https://www.youtube.com/c/Bedimcode)
+- [Carlos Azaustre - Aprende JavaScript](https://www.youtube.com/c/CarlosAzaustre)
+- [Codificandolo](https://www.youtube.com/c/ManuelMu%C3%B1ozMir)
+- [Dorian Desings](https://www.youtube.com/c/DorianDesings)
+- [midudev](https://www.youtube.com/c/midudev)
+
+No duden en volver a este post porque estaré actualizando la lista, categorizando mejor y hasta hare una lista ya no solo de canales sino de videos específicos para aprender conceptos que estén mas relacionados con BIM. En unos dos meses hare un post, acompañado de un Video tutorial de [Autodesk Forge](https://forge.autodesk.com/), para aprender como crear aplicaciones BIM en la web. Así que vayan aprendiendo los conceptos de este post porque se vienen cosas interesantes 😎
+
+Antes de despedirme, mencionar que cree un perfil de Instagram @rivers_code donde compartiré información de desarrollo de aplicaciones en BIM. Así que no duden en seguirme y hacerme todas las consultas necesarias.

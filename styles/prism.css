@@ -1,0 +1,304 @@
+code {
+  white-space: pre;
+}
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f92aad;
+  text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3;
+  background: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  overflow: auto;
+}
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: rgb(0, 15, 6);
+  border: 1px solid #1e1e3f;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 10px 15px -1px rgba(0, 255, 55, 0.2);
+}
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+.token {
+  font-weight: 400;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: #b362ff;
+}
+
+.token.delimiter,
+.token.keyword,
+.token.selector,
+.token.important,
+.token.atrule {
+  color: #ff9d00;
+}
+
+.token.operator,
+.token.attr-name {
+  color: rgb(255, 180, 84);
+}
+
+.token.punctuation {
+  color: #ffffff;
+}
+
+.token.boolean {
+  color: rgb(255, 98, 140);
+}
+
+.token.tag,
+.token.tag .punctuation,
+.token.doctype,
+.token.builtin {
+  color: rgb(255, 157, 0);
+}
+
+.token.entity,
+.token.symbol {
+  color: #6897bb;
+}
+
+.token.number {
+  color: #ff628c;
+}
+
+.token.property,
+.token.constant,
+.token.variable {
+  color: #ff628c;
+}
+
+.token.string,
+.token.char {
+  color: #a5ff90;
+}
+
+.token.attr-value,
+.token.attr-value .punctuation {
+  color: #a5c261;
+}
+
+.token.attr-value .punctuation:first-child {
+  color: #a9b7c6;
+}
+
+.token.url {
+  color: #287bde;
+  text-decoration: underline;
+}
+
+.token.function {
+  color: rgb(250, 208, 0);
+}
+
+.token.regex {
+  background: #364135;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.inserted {
+  background: #00ff00;
+}
+
+.token.deleted {
+  background: #ff000d;
+}
+.mdx-marker {
+  display: block;
+  margin-left: -5px;
+  margin-right: -5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: gray;
+  box-shadow: inset 3px 0px 0 0px blue;
+  min-width: fit-content;
+}
+.remark-code-title {
+  margin-top: 1.5rem;
+  padding: 6px 1em;
+  font-family: "Operator Mono", "Fira Code", Consolas, Monaco, "Andale Mono",
+    "Ubuntu Mono", monospace;
+  background: rgb(5, 29, 0);
+  border-bottom: 1px solid rgb(19, 56, 12, 1);
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.remark-code-title pre {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 0 !important;
+}
+table {
+  overflow-x: auto;
+  display: block;
+  font-size: 0.8rem;
+
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}
+
+thead {
+  padding: 2px 4px;
+  background: rgb(214, 222, 235);
+  color: black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+th,
+td {
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid gray;
+  color: white;
+}
+
+th {
+  color: black;
+}
+
+tbody {
+  background: #1e1e3f;
+  border: 1px solid black;
+}
+
+/*
+export const prismLightTheme = css`
+  ${prismBaseTheme};
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: ${theme.colors.gray[800]};
+  }
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: ${theme.colors.gray[50]};
+    border: 1px solid ${theme.colors.gray[200]};
+  }
+  .mdx-marker {
+    background-color: hsla(204, 45%, 96%, 1);
+  }
+`;
+
+export const prismDarkTheme = css`
+  ${prismBaseTheme};
+  :not(pre) > code[class*="language-"] {
+    background: #011627;
+  }
+  .token.attr-name {
+    color: rgb(173, 219, 103);
+    font-style: italic;
+  }
+  .token.comment {
+    color: rgb(128, 147, 147);
+  }
+  .token.string,
+  .token.url {
+    color: rgb(173, 219, 103);
+  }
+  .token.variable {
+    color: rgb(214, 222, 235);
+  }
+  .token.number {
+    color: rgb(247, 140, 108);
+  }
+  .token.builtin,
+  .token.char,
+  .token.constant,
+  .token.function {
+    color: rgb(130, 170, 255);
+  }
+  .token.punctuation {
+    color: rgb(199, 146, 234);
+  }
+  .token.selector,
+  .token.doctype {
+    color: rgb(199, 146, 234);
+    font-style: "italic";
+  }
+  .token.class-name {
+    color: rgb(255, 203, 139);
+  }
+  .token.tag,
+  .token.operator,
+  .token.keyword {
+    color: #ffa7c4;
+  }
+  .token.boolean {
+    color: rgb(255, 88, 116);
+  }
+  .token.property {
+    color: rgb(128, 203, 196);
+  }
+  .token.namespace {
+    color: rgb(178, 204, 214);
+  }
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: ${theme.colors.gray[50]};
+  }
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] {
+    background: ${theme.colors.gray[800]};
+    border: 1px solid ${theme.colors.gray[700]};
+  }
+  .mdx-marker {
+    background-color: ${theme.colors.gray[700]};
+  }
+  .remark-code-title {
+    background: ${theme.colors.gray[700]};
+    color: ${theme.colors.gray[100]};
+    border: 1px solid ${theme.colors.gray[700]};
+  }
+
+  thead {
+    background: ${theme.colors.gray[700]};
+    color: ${theme.colors.gray[100]};
+    border: 1px solid ${theme.colors.gray[700]};
+  }
+  tbody {
+    background: ${theme.colors.gray[800]};
+    border: 1px solid ${theme.colors.gray[700]};
+  }
+ */
