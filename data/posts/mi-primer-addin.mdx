@@ -3,8 +3,8 @@ title: "Mi primer addin con la API de Revit"
 publishedAt: "2021-12-26"
 summary: "Conoceremos como crear nuestro primer addin con la API de Revit."
 tags:
-  - '💻 Desarrollo'
-  - 'Revit API'
+  - "💻 Desarrollo"
+  - "Revit API"
 ---
 
 La tecnologia esta cambiando los habitos de las personas, desde mantenerlas informardas hasta volverlas mas exigentes, lo cual aporta en realización personal y laboral de cada persona, de tal manera que nos reinventemos para ofrecer buenas experiencias, responder a la demanda laboral, reducir costos, automatizar procesos, aumentar ingresos, etc. Es por ello que en este Post tratamos de compartir un granito de conocimiento de como ingresar al mundo de la API en Revit.
@@ -19,12 +19,12 @@ Empezaremos creando un proyecto con la opción de **_Crear un Proyecto_** en el 
 
 Crearemos una [librería de clases (.dll)](https://docs.microsoft.com/es-es/dotnet/standard/class-libraries) del cual encontraremos dos tipos en Visual Studio 2019, el .NET Framework con C# y .NET Framework con VB.
 
-```
-| Lenguaje        |                Caracteristicas                  |
-| _______________ | ___________________________________             |
-| Con C#          | Existe mayor documentación para desarrolladores |
-| Con VB          | La cantidad de documentación es limitada.       |
-```
+<br />
+
+| Lenguaje | Caracteristicas                                  |
+| -------- | ------------------------------------------------ |
+| Con C#   | Existe mayor documentación para desarrolladores. |
+| Con VB   | La cantidad de documentación es limitada.        |
 
 ![2.jpg](/images/posts/mi-primer-addin/2.jpg)
 
@@ -40,7 +40,8 @@ En el presente aplicativo nombraremos al proyecto y a la solución como “Hello
 
 Otro tema importante de ver al momento de crear nuestro aplicativo es tener en cuenta la version de .NET Framework. La elección de la version dependerá en la versión de Revit.
 
-```
+<br />
+
 | Version Revit | .NET Framework |
 | ------------- | -------------- |
 | 2016          | Versión 4.5    |
@@ -49,7 +50,6 @@ Otro tema importante de ver al momento de crear nuestro aplicativo es tener en c
 | 2019          | Versión 4.7    |
 | 2020          | Versión 4.7.2  |
 | 2021          | Versión 4.8    |
-```
 
 Usaremos el .NET Framework 4.7.2 para aplicarlo en el Revit 2020.
 
@@ -114,13 +114,12 @@ TaskDialog.Show("Mi primer aplicativo", "Hola Mundo");
 ![14.jpg](/images/posts/mi-primer-addin/14.jpg)
 
 Ahora faltaria añadir el transaction que va entre corchetes [ ], el cual nos permitira comunicarnos con toda la base de datos de Revit, encontraremos dos tipos:
+<br />
 
-```
 | TransactionMode | Descripción                          |
 | --------------- | ------------------------------------ |
 | ReadOnly:       | Solo modo de lectura.                |
 | Manual:         | Te permite realizar cambios a Revit. |
-```
 
 ![15.jpg](/images/posts/mi-primer-addin/15.jpg)
 
@@ -132,7 +131,7 @@ Luego crearemos el archivo manifiesto el cual es indispensable para generar el v
 
 Luego ingresamos al siguiente [Link](https://gist.github.com/riverscode/e5c8e4a3446bd6e3fb142a42b8dfe6ff) donde encontraremos una porción del codigo que va en el archivo manifiesto.
 
-```csharp
+```xml
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <RevitAddIns>
   <AddIn Type="Command">
@@ -147,8 +146,8 @@ Luego ingresamos al siguiente [Link](https://gist.github.com/riverscode/e5c8e4a3
   </AddIn>
 </RevitAddIns>
 ```
+<br />
 
-```
 | Campos            | Descripción                                                                                                                                                       |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AddIn Type        | Tipo de aplicativo que podria ser “Command” o “Aplication”                                                                                                        |
@@ -160,7 +159,6 @@ Luego ingresamos al siguiente [Link](https://gist.github.com/riverscode/e5c8e4a3
 | VendorDescription | Una descripción del aplicativo, para que sirve.                                                                                                                   |
 | VisibilityMode    | NotVisibleInFamily: Que no se aplicara dicho applicativo en una familia.                                                                                          |
 | Discipline        | Disciplina según la especialidad en que se trabajara (Arquitectura, Estructura, Electrica, Mecanicas, Etc).                                                       |
-```
 
 Luego agregaremos a Visual Studio los eventos de compilación, los cuales despues de compilar un addin dentro de Revit. Permite compilar los archivos .dll y .addin dentro de una caperta que Revit leera el manifiesto y podra cargar nuestro addin, podemos encontrar estos eventos en el siguiente [link](https://gist.github.com/riverscode/66b6acac8cd453ad8dac6e553fce9f56).
 
