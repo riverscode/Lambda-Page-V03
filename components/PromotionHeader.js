@@ -8,7 +8,7 @@ const PromotionHeader = () => {
         </p>
         <div className="flex flex-col md:flex-row items-center ">
           <div className="mt-4 md:mt-0">
-            <CountDown date={new Date("22/03/2022 23:59:59")} />
+            <CountDown date={new Date("03/22/2022 23:59:59")} />
           </div>
           <a
             href="http://wa.link/r4cdgi"
