@@ -2,10 +2,10 @@ import React from "react";
 import Head from "next/head";
 
 export default function SEO({
-  description = "Aprender BIM con los cursos mas innovadores 🚀 Desarrolla tus habilidades en BIM!",
+  description = "Aprender BIM con los cursos más innovadores 🚀 Desarrolla tus habilidades en BIM!",
   author = "Lambda, Inc",
   meta,
-  title = "Lambda Ingenieria e innovacion",
+  title = "Lambda Ingeniería e innovaciín",
   previewImage = "https://res.cloudinary.com/lambda-ingenier-a-e-innovaci-n/image/upload/v1641850100/lambda-ogimage_mbrwai.webp",
 }) {
   const metaData = [

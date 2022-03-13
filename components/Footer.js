@@ -3,10 +3,10 @@ import Link from "next/link";
 //  TODO: Mejorar el footer
 const redesSociales = [
   { icon: "youtube", link: "https://www.youtube.com/c/RiversCode" },
-  { icon: "instagram", link: "https://www.youtube.com/c/RiversCode" },
-  { icon: "github", link: "https://www.youtube.com/c/RiversCode" },
-  { icon: "facebook", link: "https://www.youtube.com/c/RiversCode" },
-  { icon: "linkedin", link: "https://www.youtube.com/c/RiversCode" },
+  { icon: "instagram", link: "https://www.instagram.com/lambda_innovacion/" },
+  { icon: "github", link: "https://github.com/riverscode" },
+  { icon: "facebook", link: "https://www.facebook.com/LambdaInnovacion" },
+  { icon: "linkedin", link: "https://www.linkedin.com/company/lambdacursos" },
 ];
 
 const Footer = () => {

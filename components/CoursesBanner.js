@@ -5,7 +5,7 @@ const CoursesBanner = () => {
     <div className="px-6 md:px-44 flex md:grid md:grid-cols-2 text-white pt-12">
       <div className="flex flex-col justify-center">
         <h1 className="text-5xl md:text-7xl  font-black bg-clip-text text-transparent bg-gradient-to-tr from-blue-700 to-violet-400 ">
-          Cursos Premium para el sector construción
+          Cursos Premium para el sector construcción
         </h1>
         <p className="text-xl md:text-2xl  mt-8 font-light">
           Aprende de expertos en{" "}

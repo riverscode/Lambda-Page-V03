@@ -14,12 +14,12 @@ const features = [
   },
   {
     icon: "books",
-    content: "Lleva a la practica tus conocimientos con proyectos reales.",
+    content: "Lleva a la práctica tus conocimientos con proyectos reales.",
   },
   {
     icon: "hand",
     content:
-      "Participa en una plataforma donde tus dudas seran resueltas de manera clara y efectiva.",
+      "Participa en una plataforma donde tus dudas serán resueltas de manera clara y efectiva.",
   },
   {
     icon: "idea",

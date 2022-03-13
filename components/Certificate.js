@@ -11,7 +11,7 @@ const Certificate = () => {
         <div className="flex flex-col-reverse md:grid md:grid-cols-2 md:gap-x-24 text-xl md:text-3xl mt-16  ">
           <div className="flex flex-col justify-center items-center">
             <p className=" mt-8 md:mt-0">
-              Todos nuestros cursos incluyen Certificación de estudio oficial de{" "}
+              Todos nuestros cursos incluyen certificación de estudio oficial de{" "}
               <span className="text-emerald-500 underline decoration-wavy font-bold">
                 Autodesk y Lambda Ingeniería e innovación{" "}
               </span>
