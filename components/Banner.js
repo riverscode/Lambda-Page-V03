@@ -23,9 +23,9 @@ const caracteristicas = [
 const Banner = () => {
   return (
     <div>
-      <div className="px-6 md:px-44 md:grid md:grid-cols-2 text-white pt-12 md:pt-24 gap-x-12">
+      <div className="px-6 md:px-44 md:grid md:grid-cols-2 text-white pt-12 md:pt-24 gap-x-8">
         <div className=" flex flex-col justify-center">
-          <h1 className="text-5xl md:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-tr from-blue-700 to-violet-400 ">
+          <h1 className="text-5xl md:text-7xl  font-black bg-clip-text text-transparent bg-gradient-to-tr from-blue-700 to-violet-400 ">
             Cursos innovadores
           </h1>
           <p className=" text-xl md:text-3xl mt-3">
@@ -48,7 +48,7 @@ const Banner = () => {
                     alt=""
                     className=" w-20"
                   />
-                  <p className="text-md md:text-xl text-center md:text-left md:ml-6 font-semibold">
+                  <p className="text-md xl:text-xl text-center md:text-left md:ml-6 font-semibold">
                     {caracteristica.text}
                   </p>
                 </div>
