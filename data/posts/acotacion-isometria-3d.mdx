@@ -1,0 +1,211 @@
+---
+title: "Acotación de Isometría en vistas 3D"
+author: "Bryan Espinoza"
+publishedAt: "2022-03-13"
+summary: "Crear acotacion de tuberías en vistas de isometría 3D."
+tags:
+  - "💻 Desarrollo"
+  - "Revit API"
+---
+
+El siguiente aplicativo a desarrollar tiene como objetivo generar las cotas de manera automática en una vista isométrica 3D.
+
+Iniciaremos creando un nuevo proyecto en Visual Studio al cual nombraremos **CotasThreeD,** para Autodesk Revit 2020.
+
+Nuestro proyecto seguirá los mismos pasos de la publicación de [**Mi primer addin con la API de Revit**](https://lambda.com.pe/blog/mi-primer-addin) con la única diferencia en el nombre del proyecto, del cual tendríamos el siguiente código.
+
+```csharp:CotasThreeD.cs
+#region NAMESPACES
+using Autodesk.Revit.Attributes;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Plumbing;
+using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Selection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+#endregion
+
+namespace CotasThreeD
+{
+   public class CotasThreeD : IExternalCommand
+   {
+      public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+      {
+         throw new NotImplementedException();
+      }
+   }
+}
+```
+
+Luego accederemos a la variable [**Documento**](https://www.revitapidocs.com/2022/ab1718f9-45fb-b3d3-827e-32ff81cf929c.htm), para poder trabajar con propiedades y métodos a lo largo de nuestro proyecto.
+
+```csharp:CotasThreeD.cs
+// Obtención de variables
+   UIApplication uiApp = commandData.Application;
+   UIDocument uiDoc = uiApp.ActiveUIDocument;
+   Document doc = uiDoc.Document;
+```
+
+Para seleccionar elementos utilizaremos el **PickObjects** y generaremos una lista de referencias.
+
+```csharp:CotasThreeD.cs
+// Seleccionar elementos
+   IList<Reference> pickreferences = uiDoc.Selection
+                                          .PickObjects(ObjectType.Element,
+														"Select element");
+```
+
+Generaremos una condicional **Foreach** para recorrer todos los elementos
+
+```csharp:CotasThreeD.cs
+// Recorro todos los elementos
+   foreach (Reference elementref in pickreferences)
+```
+
+Luego obtendremos el **ElementId** para así filtrarlos y trabajar solo con las categorías de tuberías
+
+```csharp:CotasThreeD.cs
+// Obtengo el ElementId desde la referencia
+   ElementId pipeElementId = elementref.ElementId;
+
+
+// Condicional (Filtrar los elementos para trabajar solo con tuberías)
+   Element pipeElement = doc.GetElement(pipeElementId);
+   if ((BuiltInCategory)pipeElement.Category.Id.IntegerValue != BuiltInCategory.OST_PipeCurves){
+      continue;
+   }
+
+// Continue; funciona para omitir los procesos siguientes y continuar con el siguiente elemento en la lista.
+
+// Obtener elemento doc.GetElement(pipeElementId), pero lo voy a convertir en un Pipe
+   Pipe pipe = doc.GetElement(pipeElementId) as Pipe;
+```
+
+Ahora obtendremos la curva de localización, a su vez el punto de inicio y fin.
+
+```csharp:CotasThreeD.cs
+// Obtengo la curva, pero primero tengo que obtener la location curve
+   LocationCurve pipeLocationCurve = pipe.Location as LocationCurve;
+
+// Obtengo la curva
+   Curve pipeCurve = pipeLocationCurve.Curve;
+
+// Obtengo punto inicio y punto fin
+   XYZ startPipeCurvePoint = pipeCurve.GetEndPoint(0); // 0: Inicio
+   XYZ endPipeCurvePoint = pipeCurve.GetEndPoint(1); // 1: final
+```
+
+A partir de dos puntos obtenemos una linea con el método **CreateBound**.
+
+```csharp:CotasThreeD.cs
+// Dos puntos son necesarios para crear una linea
+   Line line = Line.CreateBound(startPipeCurvePoint, endPipeCurvePoint);
+```
+
+Luego crearemos un plano de trabajo con **CreateByThreePoints** para crearlos en tres puntos (x, y, z).
+
+```csharp:CotasThreeD.cs
+Plane plane = Plane.CreateByThreePoints(startPipeCurvePoint,
+                                       endPipeCurvePoint,
+                                       new XYZ(0, 0, endPipeCurvePoint.Z));
+```
+
+Luego creamos un Array de referencias vacías donde recorreremos las geometrías de la tubería, y crearemos una condicional donde si la tubería es diferente de nula nos cree opciones de geometrías y le calcule las referencias dentro de la vista activa.
+
+```csharp:CotasThreeD.cs
+// Lista vacía para obtener las referencias
+ReferenceArray references = new ReferenceArray();
+
+// Llenar esas referencias (Lista)
+if (pipe != null)
+{
+  // Configurar opciones de geometría
+  Options op = doc.Application.Create.NewGeometryOptions();
+  op.ComputeReferences = true;
+  op.View = doc.ActiveView;
+  op.IncludeNonVisibleObjects = true;
+
+  Reference R1 = null; // referencia del punto inicial
+  Reference R2 = null; // referencia del punto final
+
+  // recorrer la geometría tratando de obtener la curva
+  foreach (var geoObj in pipe.get_Geometry(op))
+  {
+		// pedimos que la geometría sea una curva
+		Curve c = geoObj as Curve;
+		if (c != null)
+		{
+		   R1 = c.GetEndPointReference(0);
+		   R2 = c.GetEndPointReference(1);
+		}
+   }
+   references.Append(R1);
+   references.Append(R2);
+}
+
+```
+
+Ahora iniciaremos nuestra **transaction**, luego definiremos y crearemos un plano de trabajo mediante un **SketchPlane.**
+
+```csharp:CotasThreeD.cs
+using (Transaction trans = new Transaction(doc))
+   {
+     trans.Start("Create Lines");
+
+      // Creamos el plano de trabajo
+      SketchPlane sp = SketchPlane.Create(doc, plane);
+      // Establecemos el plano de trabajo
+      uiDoc.Document.ActiveView.SketchPlane = sp;
+
+      //.....
+   }
+```
+
+Por último creamos la cota, indicando que se generara en la vista activa.
+
+```csharp:CotasThreeD.cs
+{
+   //.....
+
+	// Método para crear una nueva dimensión
+	Dimension dimension = doc.Create.NewDimension(doc.ActiveView, line, references);
+   // Commit de los cambios
+	trans.Commit();
+}
+```
+
+Ya llegado a este punto hemos culminado con el aplicativo, ahora para generar el vínculo entre la (.dll) y Revit, tenemos que generar el archivo manifiesto y agregar los eventos de compilación.
+
+```xml:CotasThreeD.addin
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>CotasThreeD.dll</Assembly>
+		<ClientId>e625b384-c38e-4b72-96fd-f1af6e98565f</ClientId>
+		<FullClassName>CotasThreeD.CmdCotasThreeD</FullClassName>
+		<Text>CotasThreeD</Text>
+		<Description>Un simple addin para acotar isometrias 3D</Description>
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>Lambda Ingenieria e Innovacion</VendorDescription>
+	</AddIn>
+</RevitAddIns>
+```
+
+Es un proceso que vale la pena intentarlo y probarlo, sumémonos todos para poder formar una comunidad de personas que tengan las ganas de ingresar a este nuevo mundo de la programación.
+
+![Eventos de Compilación.PNG](/images/posts/acotacion-isometria-3d/demostracion.gif)
+
+### Nuestras redes sociales
+
+Si necesitan más información sobre este increíble mundo de la automatización de procesos a través de la creación de aplicaciones en Autodesk Revit no duden en escribirme a mi LinkedIn [Bryan Espinoza Allcca](https://www.linkedin.com/in/bryan-espinoza-bim/) o dejar comentarios debajo de este post.
+
+📷 Instagram : https://www.instagram.com/rivers_code <br />
+📓 Blog : https://lambda.com.pe/blog <br />
+🌐 Web : https://lambda.com.pe <br />
+⭐ Facebook : https://www.facebook.com/LambdaInnovacion <br />
+✔️ Tiktok : https://www.tiktok.com/@lambda.innovacion <br />
