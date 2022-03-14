@@ -8,6 +8,10 @@ export default function SEO({
   title = "Lambda Ingeniería e innovación",
   previewImage = "https://res.cloudinary.com/lambda-ingenier-a-e-innovaci-n/image/upload/v1641850100/lambda-ogimage_mbrwai.webp",
 }) {
+  console.log("previewImage", previewImage);
+  console.log("description", description);
+  console.log("title", title);
+
   const metaData = [
     {
       name: `description`,
@@ -24,7 +28,7 @@ export default function SEO({
     },
     {
       name: `twitter:card`,
-      content: `summary`,
+      content: previewImage,
     },
     {
       name: `twitter:creator`,
@@ -43,7 +47,7 @@ export default function SEO({
     <Head>
       <title>{title}</title>
       <meta property="og:image" content={previewImage} />
-      <meta property="og:title" content="Lambda: Los Mejores cursos BIM." />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta name="keywords" content="Revit, BIM, Revit API" />
       <meta name="author" content="@RiversCode" />

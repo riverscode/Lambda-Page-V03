@@ -10,6 +10,7 @@ import Link from "next/link";
 const BlogItem = ({ source, frontmatter }) => {
   const { title, publishedAt, tags, readingTime, slug, summary } = frontmatter;
 
+  // console.log(`https://lambda.com.pe/images/posts/${slug}/cover.png`);
   return (
     <>
       <Layout>
