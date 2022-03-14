@@ -8,12 +8,16 @@ import SubscriptionCard from "components/SubscriptionCard";
 import { FacebookProvider, Comments } from "react-facebook";
 import Link from "next/link";
 const BlogItem = ({ source, frontmatter }) => {
-  const { title, publishedAt, tags, readingTime, slug } = frontmatter;
+  const { title, publishedAt, tags, readingTime, slug, summary } = frontmatter;
 
   return (
     <>
       <Layout>
-        <SEO title={`Blog Lambda - ${title}`} />
+        <SEO
+          title={`Blog Lambda | ${title}`}
+          previewImage={`https://lambda.com.pe/images/posts/${slug}/cover.png`}
+          description={summary}
+        />
         <div className="flex flex-col max-w-7xl mx-auto text-white">
           <div className="flex flex-col md:grid md:grid-cols-12 md:gap-12 mt-16">
             <div className="md:col-span-8 px-6 md:px-0">
