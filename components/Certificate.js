@@ -23,7 +23,7 @@ const Certificate = () => {
               de insignias para compartir en{" "}
               <span className="text-emerald-500 underline decoration-dashed font-bold">
                 {" "}
-                Linkedin.
+                LinkedIn.
               </span>
             </p>
             <div className="flex justify-start w-full">

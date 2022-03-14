@@ -107,7 +107,7 @@ const Navbar = () => {
               rel="noreferrer"
               className=" px-4 py-1 flex items-center rounded-md bg-indigo-600  hover:bg-indigo-400 text-white"
             >
-              <p className="mr-4">Whatsapp</p>
+              <p className="mr-4">WhatsApp</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4"

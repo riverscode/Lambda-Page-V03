@@ -30,7 +30,7 @@ const Curso = ({
   return (
     <>
       <Layout>
-        <SEO title="Blog - Lamda Ingeniería & Innovación" />
+        <SEO title="Blog - Lambda Ingeniería & Innovación" />
 
         <div className="max-w-7xl m-auto text-gray-300 ">
           <CourseBanner

@@ -48,12 +48,12 @@ const FrequentlyQuestions = () => {
         </CollapsableText>
         <CollapsableText question="¿Qué pasa si necesito ayuda?">
           <p >
-            Al inscribirte a nuestros cursos, tendras acceso exclusivo a grupos
+            Al inscribirte a nuestros cursos, tendrás acceso exclusivo a grupos
             privados donde nuestros{" "}
             <span className="text-emerald-500 underline decoration-wavy font-bold">
               docentes principales y nuestros profesionales adjuntos{" "}
             </span>{" "}
-            solucionarán tus inconvenientes en un maximo de 2 horas.
+            solucionarán tus inconvenientes en un máximo de 2 horas.
             <p className="mt-4">
               Si te quedas atascado o no entiendes una parte específica de una
               lección, puedes compartir tu problema para obtener ayuda junto con

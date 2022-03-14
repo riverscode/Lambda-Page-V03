@@ -76,7 +76,7 @@ const CourseDescriptionCard = ({
               rel="noreferrer"
               className="font-semibold text-md md:text-xl"
             >
-              Cómpralo Ahora
+              Compralo Ahora
             </a>
           </button>
           <p className="font-bold mt-8 text-xl md:text-2xl underline underline-offset-4">

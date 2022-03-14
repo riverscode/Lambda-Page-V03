@@ -42,12 +42,12 @@ const CountDown = ({ date }) => {
           <div className="flex  text-center text-gray-100 divide-x">
             <div className="flex flex-col px-2">
               <p className="text-sm font-bold">{days}</p>
-              <p className="text-xs">dias</p>
+              <p className="text-xs">Días</p>
             </div>
 
             <div className="flex flex-col px-2">
               <p className="text-sm font-bold">{hours}</p>
-              <p className="text-xs">horas</p>
+              <p className="text-xs">Horas</p>
             </div>
             <div className="flex flex-col px-2">
               <p className="text-sm font-bold">{minutes}</p>

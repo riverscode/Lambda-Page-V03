@@ -9,7 +9,7 @@ const cursos = ({ courses }) => {
   return (
     <>
       <Layout>
-        <SEO title="Cursos BIM - Lamda Ingeniería & Innovación" />
+        <SEO title="Cursos BIM - Lambda Ingeniería & Innovación" />
         <header>
           <CoursesBanner />
           <CoursesList courses={courses} />

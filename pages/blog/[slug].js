@@ -13,7 +13,7 @@ const BlogItem = ({ source, frontmatter }) => {
   return (
     <>
       <Layout>
-        <SEO title={`Blog - ${title}`} />
+        <SEO title={`Blog Lambda - ${title}`} />
         <div className="flex flex-col max-w-7xl mx-auto text-white">
           <div className="flex flex-col md:grid md:grid-cols-12 md:gap-12 mt-16">
             <div className="md:col-span-8 px-6 md:px-0">

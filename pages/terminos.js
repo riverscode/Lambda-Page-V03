@@ -4,9 +4,9 @@ const terminos = () => {
   return (
     <>
       <Layout>
-        <SEO title="Lambda - Terminos y Condiciones" />
+        <SEO title="Lambda - Términos y Condiciones" />
         <div className="max-w-7xl mx-auto mt-32 text-white">
-          <h1 className="text-5xl font-bold">Politica de Privacidad</h1>
+          <h1 className="text-5xl font-bold">Política de Privacidad</h1>
           <p className="text-gray-400 italic">Actualizado: Marzo 2022</p>
           <div className="mt-16">
             <p className="text-xl">

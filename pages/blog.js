@@ -7,7 +7,7 @@ const blog = ({ blogs }) => {
   return (
     <>
       <Layout>
-        <SEO title="Blog - Lamda Ingeniería & Innovación" />
+        <SEO title="Blog - Lambda Ingeniería & Innovación" />
         <BlogList blogs={blogs} />
       </Layout>
     </>
