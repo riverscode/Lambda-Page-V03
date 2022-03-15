@@ -25,6 +25,7 @@ const Curso = ({
     videos,
     attached,
     projects,
+    instructorCode,
   },
 }) => {
   return (
@@ -38,6 +39,7 @@ const Curso = ({
             title={title}
             teacher={teacher}
             summary={summary}
+            instructorCode={instructorCode}
           />
 
           <div className="w-full flex flex-col-reverse rounded-md md:grid  md:grid-cols-12 md:gap-16 pt-12 px-6 md:px-0  ">

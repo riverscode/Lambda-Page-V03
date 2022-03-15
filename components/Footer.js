@@ -33,7 +33,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="/cursos/programa-dynamo-python-csharp">
+              <Link href="/cursos/revit-api">
                 <a className="text-md">⭐ Revit API</a>
               </Link>
             </li>

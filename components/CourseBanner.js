@@ -1,7 +1,13 @@
 import ButtonWhatsapp from "components/ButtonWhatsapp";
 import LambdaTag from "components/LambdaTag";
 
-const CourseBanner = ({ categories, title, teacher, summary }) => {
+const CourseBanner = ({
+  categories,
+  title,
+  teacher,
+  summary,
+  instructorCode,
+}) => {
   return (
     <div className="grid  grid-cols-1 md:grid-cols-5 gap-5 md:gap-16 pt-16 rounded-md px-6 md:px-0">
       <div className="flex flex-col mx-auto md:col-span-3 md:row-start-auto max-w-screen-2xl">
@@ -18,8 +24,8 @@ const CourseBanner = ({ categories, title, teacher, summary }) => {
             <div className="flex flex-shrink-0">
               <img
                 className="sm:w-10 sm:h-10 w-8 h-8 rounded-full flex-shrink-0"
-                src="https://lh3.googleusercontent.com/a-/AOh14Gi-6OjKmLfVZCNovUUD5MmM6yeduMoW2E2RC1fiog=s432-p-rw-no"
-                alt=""
+                src={`/images/instructor/${instructorCode}.png`}
+                alt={teacher}
               />
               <div className="sm:pl-2 pl-1 flex flex-col justify-center">
                 <h4 className="text-gray-700 dark:text-gray-400 text-sm leading-tighter">

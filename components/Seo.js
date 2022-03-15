@@ -8,10 +8,6 @@ export default function SEO({
   title = "Lambda Ingeniería e innovación",
   previewImage = "https://res.cloudinary.com/lambda-ingenier-a-e-innovaci-n/image/upload/v1641850100/lambda-ogimage_mbrwai.webp",
 }) {
-  console.log("previewImage", previewImage);
-  console.log("description", description);
-  console.log("title", title);
-
   const metaData = [
     {
       name: `description`,
