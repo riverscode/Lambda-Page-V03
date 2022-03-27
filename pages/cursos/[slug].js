@@ -31,7 +31,11 @@ const Curso = ({
   return (
     <>
       <Layout>
-        <SEO title="Blog - Lambda Ingeniería & Innovación" />
+        <SEO
+          title={`Curso Lambda - ${title}`}
+          canonical={`https://lambda.com.pe/cursos/${slug}`}
+          description={summary}
+        />
 
         <div className="max-w-7xl m-auto text-gray-300 ">
           <CourseBanner
