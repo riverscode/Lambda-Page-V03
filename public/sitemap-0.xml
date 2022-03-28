@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://lambda.com.pe</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/cursos</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/cursos/coordinacion-bim-hospitales</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/cursos/dynamo-gestion-informacion</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/cursos/gestion-bim-iso-19650</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/cursos/revit-api</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog/acotacion-isometria-3d</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog/crear-configuracion-usuario</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog/crear-parametro-compartido</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog/cuantificar-por-modelo-generico</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog/mi-primer-addin</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog/palabras-magicas-desarrollo-Web</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog/revit-api-msi-installer</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+<url><loc>https://lambda.com.pe/blog/vincular-multiples-modelos</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2022-03-28T04:33:14.042Z</lastmod></url>
+</urlset>

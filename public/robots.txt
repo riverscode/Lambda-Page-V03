@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://lambda.com.pe
+
+# Sitemaps
+Sitemap: https://lambda.com.pe/sitemap.xml
