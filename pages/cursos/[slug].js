@@ -35,6 +35,7 @@ const Curso = ({
           title={`Curso Lambda - ${title}`}
           canonical={`https://lambda.com.pe/cursos/${slug}`}
           description={summary}
+          keywords={categories.toString()}
         />
 
         <div className="max-w-7xl m-auto text-gray-300 ">

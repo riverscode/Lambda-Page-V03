@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState } from "react";
 
 const CollapsableContent = ({
@@ -32,7 +33,7 @@ const CollapsableContent = ({
           </div>
         </div>
         <div className=" col-span-2 flex w-64 mb-8 md:mb-0 md:w-full ">
-          <img
+          <Image
             src={`/images/IllustrationsThreeD/${image}.png`}
             alt="Icono del curso"
             className="w-64"

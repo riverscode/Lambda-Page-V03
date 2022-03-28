@@ -1,6 +1,7 @@
 import { formatDate } from "lib/formatDate";
 import LambdaTag from "components/LambdaTag";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function BlogCard({
   title,
@@ -13,10 +14,12 @@ export default function BlogCard({
     <div className=" flex flex-col rounded-md shadow-lg shadow-teal-500/25 hover:-translate-y-1 transition ease-out  duration-300 hover:scale-105">
       <Link href={`/blog/${slug}`}>
         <a>
-          <img
+          <Image
             src={`/images/posts/${slug}/cover.png`}
-            alt="image"
+            alt={title}
             className="w-full h-auto object-cover rounded-t-md"
+            width={450}
+            height={250}
           />
           <div className="p-6">
             <div className="flex">

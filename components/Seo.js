@@ -5,6 +5,7 @@ export default function SEO({
   description = "Aprender BIM con los cursos más innovadores 🚀 Desarrolla tus habilidades en BIM!",
   author = "Lambda, Inc",
   meta,
+  keywords = "Revit, Dynamo, ISO19650, BIM, RevitAPI",
   canonical = "https://lambda.com.pe/",
   title = "Lambda Ingeniería e innovación",
   previewImage = "https://res.cloudinary.com/lambda-ingenier-a-e-innovaci-n/image/upload/v1641850100/lambda-ogimage_mbrwai.webp",
@@ -44,14 +45,12 @@ export default function SEO({
     <Head>
       <title>{title}</title>
       <link rel="canonical" href={canonical} />
-      <meta
-        property="og:site_name"
-        content="Lambda Ingeniería e Innovación"
-      ></meta>
+      <meta property="og:site_name" content="Lambda Ingeniería e Innovación" />
+      <meta property="og:locale" content="es_PE" />
       <meta property="og:image" content={previewImage} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta name="keywords" content="Revit API, RevitAPI, Revit, BIM " />
+      <meta name="keywords" content={keywords} />
       <meta name="author" content="@RiversCode" />
       {metaData.map(({ name, content }, i) => (
         <meta key={i} name={name} content={content} />

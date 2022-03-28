@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ButtonCourse from "./ButtonCourse";
 const Certificate = () => {
   return (
@@ -31,16 +32,24 @@ const Certificate = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <img
-              src="/images/autodeskCertificate.png"
-              alt="Certificado Autodesk"
-              className="w-96 rounded-md"
-            />
-            <img
-              src="/images/lambdaCertificate.png"
-              alt="Certificado Lambda"
-              className="w-96 self-end mt-4 rounded-md"
-            />
+            <div className="w-80 md:w-96">
+              <Image
+                src="/images/autodeskCertificate.png"
+                alt="Certificado Autodesk"
+                width={700}
+                height={450}
+                className="rounded-md"
+              />
+            </div>
+            <div className="w-80 md:w-96 md:self-end mt-4 ">
+              <Image
+                src="/images/lambdaCertificate.png"
+                alt="Certificado Lambda"
+                width={700}
+                height={450}
+                className="rounded-md"
+              />
+            </div>
           </div>
         </div>
       </div>

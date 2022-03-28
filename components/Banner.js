@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ButtonCourse from "./ButtonCourse";
 import TecnologyItem from "./TecnologyItem";
 
@@ -43,11 +44,14 @@ const Banner = () => {
                   className="flex flex-col md:flex-row items-center"
                   key={index}
                 >
-                  <img
-                    src={`/images/${caracteristica.image}.png`}
-                    alt=""
-                    className=" w-20"
-                  />
+                  <div className="w-20">
+                    <Image
+                      src={`/images/${caracteristica.image}.png`}
+                      alt={caracteristica.image}
+                      width={100}
+                      height={100}
+                    />
+                  </div>
                   <p className="text-md xl:text-xl text-center md:text-left md:ml-6 font-semibold">
                     {caracteristica.text}
                   </p>
@@ -61,10 +65,12 @@ const Banner = () => {
           </p>
         </div>
         <div className="hidden md:flex md:flex-col md:justify-center ">
-          <img
+          <Image
             className="rounded-xl shadow-lg shadow-teal-500/30"
             src="/images/campus.png"
-            alt="campus"
+            width={800}
+            height={600}
+            alt="Interfaz del Campus BIM"
           />
         </div>
       </div>

@@ -15,7 +15,7 @@ const Navbar = () => {
             <a className="flex items-center ">
               <img
                 src="/images/lambdaLogo.svg"
-                alt="Logo"
+                alt="Logo Lambda BIM"
                 className="w-12 h-12"
               />
               <p className="ml-2 text-3xl font-semibold">Lambda</p>
@@ -38,7 +38,11 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          <button className="h-6 w-6 md:hidden" onClick={handleClick}>
+          <button
+            className="h-6 w-6 md:hidden"
+            onClick={handleClick}
+            aria-label="Menu"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -71,6 +75,7 @@ const Navbar = () => {
             <button
               className="h-6 w-6 md:hidden self-end"
               onClick={handleClick}
+              aria-label="Menu Close"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

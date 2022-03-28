@@ -25,7 +25,7 @@ const CourseBanner = ({
               <img
                 className="sm:w-10 sm:h-10 w-8 h-8 rounded-full flex-shrink-0"
                 src={`/images/instructor/${instructorCode}.png`}
-                alt={teacher}
+                alt={`Profesor ${teacher}`}
               />
               <div className="sm:pl-2 pl-1 flex flex-col justify-center">
                 <h4 className="text-gray-700 dark:text-gray-400 text-sm leading-tighter">

@@ -20,7 +20,11 @@ const CoursesBanner = () => {
         </p>
       </div>
       <div className="hidden md:flex md:flex-col md:justify-center ">
-        <img src="/images/CoursesBanner.png" alt="Banner" className="w-5/6" />
+        <img
+          src="/images/CoursesBanner.png"
+          alt="Banner de cursos Revit BIM"
+          className="w-5/6"
+        />
       </div>
     </div>
   );

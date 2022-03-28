@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 //  TODO: Mejorar el footer
@@ -14,7 +15,12 @@ const Footer = () => {
     <>
       <div className=" border-b-2 border-gray-600 pb-4">
         <div className="flex justify-start max-w-7xl m-auto">
-          <img src="/images/lambdaLogo.svg" alt="Logo" />
+          <Image
+            src="/images/lambdaLogo.svg"
+            alt="Logo Lambda BIM"
+            width={40}
+            height={40}
+          />
           <p className="ml-2 text-2xl font-semibold text-white">Lambda</p>
         </div>
       </div>
@@ -24,17 +30,17 @@ const Footer = () => {
           <ul>
             <li>
               <Link href="/cursos">
-                <a className="text-md">🏗️ Cursos</a>
+                <a className="text-xl">🏗️ Cursos</a>
               </Link>
             </li>
             <li>
               <Link href="/blog">
-                <a className="text-md">🏗️ Blog</a>
+                <a className="text-xl">🏗️ Blog</a>
               </Link>
             </li>
             <li>
               <Link href="/cursos/revit-api">
-                <a className="text-md">⭐ Revit API</a>
+                <a className="text-xl">⭐ Revit API</a>
               </Link>
             </li>
           </ul>
@@ -44,12 +50,12 @@ const Footer = () => {
           <ul>
             <li>
               <Link href="/cursos">
-                <a className="text-md">📞 +51 949 576 497</a>
+                <a className="text-xl">📞 +51 949 576 497</a>
               </Link>
             </li>
             <li>
               <Link href="/blog">
-                <a className="text-md inline-block">
+                <a className="text-xl inline-block">
                   💌 Informes@lambda.com.pe
                 </a>
               </Link>
@@ -62,9 +68,11 @@ const Footer = () => {
         {redesSociales.map((redSocial, index) => {
           return (
             <a href={redSocial.link} key={index}>
-              <img
+              <Image
                 src={`/images/redes/${redSocial.icon}.svg`}
                 alt={redSocial.icon}
+                width={40}
+                height={40}
               />
             </a>
           );
