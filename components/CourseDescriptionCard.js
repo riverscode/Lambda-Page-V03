@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useState } from "react";
 
 const ModalVideo = dynamic(
@@ -32,11 +33,14 @@ const CourseDescriptionCard = ({
       />
       <div className="rounded-md shadow-lg shadow-teal-500/25 relative mt-4 md:mt-0">
         <div className="relative">
-          <img
-            className=" rounded-t-md"
-            src={`/images/courses/${slug}.png`}
-            alt="Video del curso"
-          />
+          <div className=" rounded-t-md">
+            <Image
+              src={`/images/courses/${slug}.png`}
+              alt="Video del curso"
+              width={400}
+              height={300}
+            />
+          </div>
           <button
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             onClick={() => setOpen(true)}

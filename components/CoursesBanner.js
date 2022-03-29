@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ButtonWhatsapp from "./ButtonWhatsapp";
 
 const CoursesBanner = () => {
@@ -20,11 +21,14 @@ const CoursesBanner = () => {
         </p>
       </div>
       <div className="hidden md:flex md:flex-col md:justify-center ">
-        <img
-          src="/images/CoursesBanner.png"
-          alt="Banner de cursos Revit BIM"
-          className="w-5/6"
-        />
+        <div className="w-5/6">
+          <Image
+            src="/images/CoursesBanner.png"
+            alt="Banner de cursos Revit BIM"
+            width={620}
+            height={620}
+          />
+        </div>
       </div>
     </div>
   );

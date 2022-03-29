@@ -32,12 +32,15 @@ const CollapsableContent = ({
             </button>
           </div>
         </div>
-        <div className=" col-span-2 flex w-64 mb-8 md:mb-0 md:w-full ">
-          <Image
-            src={`/images/IllustrationsThreeD/${image}.png`}
-            alt="Icono del curso"
-            className="w-64"
-          />
+        <div className=" col-span-2 hidden xl:flex w-64 mb-8 md:mb-0 md:w-full  ">
+          <div className="w-64">
+            <Image
+              src={`/images/IllustrationsThreeD/${image}.png`}
+              alt="Icono del curso"
+              width={420}
+              height={420}
+            />
+          </div>
         </div>
       </div>
 

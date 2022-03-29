@@ -1,5 +1,6 @@
 import ButtonWhatsapp from "components/ButtonWhatsapp";
 import LambdaTag from "components/LambdaTag";
+import Image from "next/image";
 
 const CourseBanner = ({
   categories,
@@ -22,11 +23,15 @@ const CourseBanner = ({
         <div className="flex flex-col my-6 space-y-2 items-start">
           <div>
             <div className="flex flex-shrink-0">
-              <img
-                className="sm:w-10 sm:h-10 w-8 h-8 rounded-full flex-shrink-0"
-                src={`/images/instructor/${instructorCode}.png`}
-                alt={`Profesor ${teacher}`}
-              />
+              <div className="sm:w-10 sm:h-10 w-8 h-8">
+                <Image
+                  className=" rounded-full flex-shrink-0"
+                  src={`/images/instructor/${instructorCode}.png`}
+                  alt={`Profesor ${teacher}`}
+                  width={40}
+                  height={40}
+                />
+              </div>
               <div className="sm:pl-2 pl-1 flex flex-col justify-center">
                 <h4 className="text-gray-700 dark:text-gray-400 text-sm leading-tighter">
                   Instructor

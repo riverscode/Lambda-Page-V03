@@ -24,7 +24,7 @@ const Footer = () => {
           <p className="ml-2 text-2xl font-semibold text-white">Lambda</p>
         </div>
       </div>
-      <div className="flex text-gray-400 mt-8 justify-between max-w-7xl mx-auto">
+      <div className="flex flex-col  md:flex-row text-gray-400 mt-8 justify-between max-w-7xl mx-auto">
         <div>
           <p className="text-2xl font-bold mb-5">Contenido</p>
           <ul>
@@ -46,7 +46,7 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <p className="text-2xl font-bold  mb-5">Contacto</p>
+          <p className="text-2xl font-bold  mb-5 mt-8 md:mt-0">Contacto</p>
           <ul>
             <li>
               <Link href="/cursos">

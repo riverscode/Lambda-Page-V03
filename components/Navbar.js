@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -13,11 +14,14 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/">
             <a className="flex items-center ">
-              <img
-                src="/images/lambdaLogo.svg"
-                alt="Logo Lambda BIM"
-                className="w-12 h-12"
-              />
+              <div className="w-12 h-12 flex items-center ">
+                <Image
+                  src="/images/lambdaLogo.svg"
+                  alt="Logo Lambda BIM"
+                  width={60}
+                  height={60}
+                />
+              </div>
               <p className="ml-2 text-3xl font-semibold">Lambda</p>
             </a>
           </Link>
