@@ -5,8 +5,8 @@ const PythonOnDynamoPage = () => {
     <>
       <Layout>
         <SEO title="Evento - Lambda Ingeniería & Innovación" />
-        <div className="flex gap-x-8 flex-1 items-center max-w-7xl mx-auto px-4 py-4">
-          <div className="w-2/5 text-white">
+        <div className="flex flex-col-reverse md:flex-row gap-x-8 flex-1 items-center max-w-7xl mx-auto px-4 py-4">
+          <div className="md:w-2/5 mt-8 md:mt-0 text-white">
             <p>El día 19 de Junio del 2022 tuvimos un excelente webinar a cargo del ingeniero Renzo Rios, donde vimos junto con un promedio de 53 personas como aprender a usar {" "} 
               <span className="font-semibold ">Python dentro de Dynamo.</span>
             </p>
@@ -19,7 +19,7 @@ const PythonOnDynamoPage = () => {
               rel="noreferrer">Descargar Presentación</a>
             </div>
           </div>
-          <div className="w-3/5">
+          <div className="md:w-3/5 ">
             <img src="/images/python-dentro-dynamo.jpg" alt="Python dentro de Dynamo"  />
           </div>
         </div>
